@@ -38,12 +38,15 @@ def check_winner():
     # Проверка столбцов
     for y in range(3):
         if T[0][y] == T[1][y] == T[2][y] != "-":
+            # Возвращаем имя игрока
             return [player for player, symbol in players.items() if symbol == T[0][y]]
 
     # Проверка диагоналей
     if T[0][0] == T[1][1] == T[2][2] != "-":
+        # Возвращаем имя игрока
         return [player for player, symbol in players.items() if symbol == T[0][0]]
     if T[0][2] == T[1][1] == T[2][0] != "-":
+        # Возвращаем имя игрока
         return [player for player, symbol in players.items() if symbol == T[0][2]]
 
     return None
@@ -63,6 +66,7 @@ def player_turn(name: str, symbol: str):
         T[x][y] = symbol
         break
 
+#Главная функция игры
 def start_game():
     current_player = player_one
     current_symbol = players[current_player]
@@ -70,7 +74,8 @@ def start_game():
     moves = 0
 
     while True:
-        player_turn(current_player, current_symbol)  # Игрок делает ход
+        # Игрок делает ход
+        player_turn(current_player, current_symbol)
 
         # Проверяем на победителя
         winner = check_winner()
